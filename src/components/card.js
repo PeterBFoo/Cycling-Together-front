@@ -81,7 +81,7 @@ var cardComponent = {
         }
     },
 
-    fillTemplateAvailabilities: function (availabilities) {
+    fillTemplate: function (availabilities) {
         let cards = [];
 
         availabilities.forEach((availability) => {
@@ -93,7 +93,7 @@ var cardComponent = {
                 props.photo.href = availability.bycicle.photo;
                 props.storeName.href = availability.store.website;
                 props.storeName.content = "See the store " + availability.store.storeName;
-                props.category.href = "http://localhost:3000/bycicles/get/category/" + availability.bycicle.category;
+                props.category.href = "./index.html?category=" + availability.bycicle.category;
                 props.category.content = "Search all the " + availability.bycicle.category;
                 props.title.content = availability.bycicle.model;
                 props.subtitle.content = availability.bycicle.brand;

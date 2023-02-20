@@ -4,16 +4,19 @@
   font-family: __Roboto_d943ac, __Roboto_Fallback_d943ac, system-ui, sans-serif;
 }
 
-.footer {
-  position: flex;
-  justify-content: bottom;
-  bottom: 0;
-  background-color: #77dc94;
-  color: #312F2F;
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  text-align: center;
-  width: 100%;
-  z-index: 10;
+}
+
+.pagination button {
+  padding: 10px;
+}
+
+.pagination p {
+  padding: 15px;
 }
 
 .availabilityNotFound {
@@ -62,6 +65,73 @@ nav a:focus {
   padding: 20px;
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.effect {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  background-color: #312F2F;
+  font-size: 14px;
+  padding: 20px 0px;
+  width: 150px;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.2s linear 0s;
+}
+
+.effect.arrowLeft:before {
+  content: "←";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 100%;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0 50% 50% 0;
+  transform: scale(0, 1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+}
+
+.effect.arrowRight:before {
+  content: "→";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  height: 100%;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50% 0 0 50%;
+  transform: scale(0, 1);
+  transform-origin: right center;
+  transition: all 0.2s linear 0s;
+}
+
+.effect.arrowLeft:hover {
+  background-color: #312F2F;
+  color: #ffffff;
+  text-indent: 30px;
+}
+
+.effect.arrowRight:hover {
+  background-color: #312F2F;
+  color: #ffffff;
+  text-indent: -30px;
+}
+
+.effect:hover:before {
+  transform: scale(1, 1);
+  text-indent: 0;
 }
 
 .blog-card {

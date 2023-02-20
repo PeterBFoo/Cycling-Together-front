@@ -7,17 +7,29 @@
     <div class="container">
       <div class="header-container"></div>
       <div class="content"></div>
-      <div class="footer-container"></div>
+      <div class="pagination">
+        <div id="previous">
+          <button class="effect arrowLeft" onclick="previousPage()">Previous</button>
+        </div>
+        <p id="currentPage"></p>
+        <div id="next">
+          <button class="effect arrowRight" onclick="nextPage()">Next</button>
+        </div>
+      </div>
     </div>
   </body>
   <script src="../services/AvailabilityService.js"></script>
   <script src="../components/card.js"></script>
   <script src="../components/header.js"></script>
-  <script src="../components/footer.js"></script>
+  <script src="../utils/Utils.js"></script>
   <script>
     window.addEventListener("load", async () => {
+      this.availabilities = [];
+      this.pagination = 3;
+      this.currentPage = 1;
+      this.maxPage = 0;
+
       document.querySelector(".header-container").innerHTML = headerComponent.fillTemplateDefault();
-      document.querySelector(".footer-container").innerHTML = footerComponent.fillTemplateDefault();
 
       availabilityService
         .getAvailability()
@@ -28,13 +40,63 @@
           return response.json();
         })
         .then((data) => {
-          let cards = cardComponent.fillTemplateAvailabilities(data);
-          document.querySelector(".content").innerHTML = cards.join("");
+
+          if (utils.getUrlParam("category")) {
+            data = data.filter((availability) => availability.bycicle.category === utils.getUrlParam("category"));
+            document.querySelector(".pagination").innerHTML += `<button class="effect" onclick="removeFilters()">Remove filters</button>`;
+          }
+
+          data.forEach((availability) => {
+            this.availabilities.push(availability);
+          });
+
+          this.maxPage = Math.ceil(this.availabilities.length / this.pagination);
+          let cards = cardComponent.fillTemplate(this.availabilities.slice(0, this.pagination));
+
+          cards.forEach((card) => {
+            document.querySelector(".content").innerHTML += card;
+          });
+
+          document.querySelector("#currentPage").innerHTML = this.currentPage + "/" + this.maxPage;
         })
         .catch((error) => {
           document.querySelector(".content").innerHTML = `<h1 class="availabilityNotFound" >Sorry, we are not able to show you the availabilities at the moment. Please try again later.</h1>`;
           console.log(error);
         });
     });
+
+    function nextPage() {
+      if (this.currentPage < this.maxPage) {
+        this.currentPage++;
+        document.querySelector(".content").innerHTML = "";
+        document.querySelector("#currentPage").innerHTML = this.currentPage + "/" + this.maxPage;
+
+        let cards = cardComponent.fillTemplate(
+          this.availabilities.slice((this.currentPage - 1) * this.pagination, this.currentPage * this.pagination)
+        );
+        cards.forEach((card) => {
+          document.querySelector(".content").innerHTML += card;
+        });
+      } 
+    }
+
+    function previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+        document.querySelector(".content").innerHTML = "";
+        document.querySelector("#currentPage").innerHTML = this.currentPage + "/" + this.maxPage;
+
+        let cards = cardComponent.fillTemplate(
+          this.availabilities.slice((this.currentPage - 1) * this.pagination, this.currentPage * this.pagination)
+        );
+        cards.forEach((card) => {
+          document.querySelector(".content").innerHTML += card;
+        });
+      }
+    }
+    
+    function removeFilters() {
+      window.location.href = "./index.html";
+    }
   </script>
 </html>
