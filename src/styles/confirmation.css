@@ -1,0 +1,135 @@
+.content {
+	text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links {
+  padding: 20px;
+}
+
+.links {
+  color: #312F2F;
+  text-decoration: none;
+  padding: 30px;
+}
+
+.effect {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  background-color: #312F2F;
+  font-size: 14px;
+  padding: 20px 0px;
+  width: 150px;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.2s linear 0s;
+}
+
+.effect.arrow:before {
+  content: "←";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 100%;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0 50% 50% 0;
+  transform: scale(0, 1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+}
+
+.effect.print:before {
+  content: "🖨";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 100%;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0 50% 50% 0;
+  transform: scale(0, 1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+}
+
+.effect.cancel:before {
+  content: "❌";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 100%;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0 50% 50% 0;
+  transform: scale(0, 1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+}
+
+.effect.arrow:hover {
+  background-color: #5ad67d;
+  color: #312F2F;
+  text-indent: 30px;
+}
+
+.effect.print:hover {
+  background-color: #636764;
+  color: #ffffff;
+  text-indent: 30px;
+}
+
+.effect.cancel:hover {
+  background-color: #fe6b6b;
+  color: #312F2F;
+  text-indent: 30px;
+}
+
+.effect:hover:before {
+  transform: scale(1, 1);
+  text-indent: 0;
+}
+
+.column {
+	box-shadow: inset 0 0 0 2px #312F2F;
+	border-radius: 8px;
+	display: inline-block;
+	padding: 50px;
+	width: 60%;
+	color: #312F2F;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.4em;
+}
+
+.divider {
+	width: 40%;
+	height: 2px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #312F2F;
+	border: 0 none;
+	margin-top: 14px;
+	margin-bottom: 40px;
+}
+
+@media screen and (max-width: 600px) { 
+		.column{
+			width: 80%;
+		}
+	}
