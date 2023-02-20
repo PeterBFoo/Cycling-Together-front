@@ -41,6 +41,32 @@
             }
         });
 
+        function cancelBooking() {
+            let bookingId = document.getElementById("bookingId").value;
+            bookingService.cancelBooking(bookingId)
+            .then((response) => {
+                if (response.status == 404) {
+                    document.getElementById("error").innerHTML = "Booking not found";
+                    return false;
+                } else if (response.status == 500) {
+                    document.getElementById("error").innerHTML = "Something went wrong, please contact the administrator or wait for the error to be fixed";
+                    return false;
+                }
+                return response.json();
+            })
+            .then(booking => {
+                document.getElementById("cancelBooking").hidden = true;
+                let bookingDetailsContainer = document.getElementById("bookingDetails");
+                bookingDetailsContainer.innerHTML = `
+                        <h2>Booking details</h2>
+                        <p>Your booking with ID <strong>${booking.publicId}</strong> is canceled. Thank you so much, dear customer</p>
+                    `;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+
         function showSearcher() {
             document.getElementById("bookingDetails").innerHTML = "";
             document.getElementById("bookingSearcher").hidden = false;
@@ -97,8 +123,8 @@
                         bookingDetailsContainer.innerHTML += `<p><strong>Email</strong>: ${booking.email}</p>`;
                     }
 
-                    if (booking.phone) {
-                        bookingDetailsContainer.innerHTML += `<p><strong>Phone</strong>: ${booking.phone}</p>`;
+                    if (booking.phoneNumber) {
+                        bookingDetailsContainer.innerHTML += `<p><strong>Phone</strong>: ${booking.phoneNumber}</p>`;
                     }
 
                     bookingDetailsContainer.innerHTML += `
