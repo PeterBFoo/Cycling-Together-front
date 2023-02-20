@@ -1,0 +1,171 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: __Roboto_d943ac, __Roboto_Fallback_d943ac, system-ui, sans-serif;
+}
+
+.effect {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  background-color: #312F2F;
+  font-family: "Roboto", sans-serif; /* put your font-family */
+  font-size: 18px;
+  padding: 20px 0px;
+  width: 150px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.effect.effect-5 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-5:before {
+  content: "🚲";
+  font-family: FontAwesome;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 100%;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0 50% 50% 0;
+  transform: scale(0, 1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-5:hover {
+  background-color: #5ad67d;
+  color: #312F2F;
+  text-indent: 30px;
+}
+.effect.effect-5:hover:before {
+  transform: scale(1, 1);
+  text-indent: 0;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+  padding: 3pt;
+}
+
+.bycicle {
+  
+  color: #312F2F;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #312F2F;
+  padding: 20px;
+}
+
+.bycicle__info {
+  margin-right: 10%;
+}
+
+.bycicle__photo {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.bycicle__info__title {
+  text-align: center;
+  margin-right: 10%;
+  margin-bottom: 20px;
+  box-shadow: #5ad67d 0px 2px 0px 0px;
+  font-size: 10pt;
+}
+
+.bycicle__info__description {
+  text-align: right;
+  text-decoration: none;
+  text-align: left;
+  box-shadow: #5ad67d 0px 2px 0px 0px;
+  padding-bottom: 12pt;
+  font-size: 11pt;
+}
+
+.bycicle__info__price {
+  text-align: left;
+  margin-top: 10pt;
+  padding: 10pt;
+}
+
+.bycicle__booking {
+  text-align: center;
+  margin-top: 10pt;
+  padding: 10pt;
+}
+
+.bycicle__booking a {
+  background-color: #5ad67d;
+  color: white;
+  padding: 10pt;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16pt;
+  text-decoration: none;
+}
+
+.bycicle__info__title h1 {
+  font-weight: 700;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  background-color: #77dc94;
+  color: #312F2F;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+
+.header {
+  width: 100%;
+  padding: 1em;
+  font-size: 140%;
+  position: flex;
+  background-color: #312F2F;
+  color: white;
+  text-align: center;
+}
+.header h1 {
+  font-weight: 600;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+nav a {
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+  opacity: .7;
+  padding: 0 .5em;
+  font-size: 12pt;
+  color: rgb(163, 163, 163);
+  transition: opacity .2s ease-in-out;
+}
+
+nav a:hover,
+nav a:focus {
+  opacity: 1;
+  transition: 0.2s;
+  font-size: 15pt;
+  color: white;
+}
