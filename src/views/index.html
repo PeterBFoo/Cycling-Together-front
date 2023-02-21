@@ -2,6 +2,8 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../styles/availability.css" />
+    <link rel="icon" href="https://bikeshare.metro.net/wp-content/uploads/2016/04/cropped-metro-bike-share-favicon-1-300x300.png" />
+    <title>Home</title>
   </head>
   <body>
     <div class="container">
@@ -11,7 +13,7 @@
         <div id="previous">
           <button class="effect arrowLeft" onclick="previousPage()">Previous</button>
         </div>
-        <p id="currentPage"></p>
+        <p id="pageIndicator"></p>
         <div id="next">
           <button class="effect arrowRight" onclick="nextPage()">Next</button>
         </div>
@@ -41,9 +43,8 @@
         })
         .then((data) => {
 
-          if (utils.getUrlParam("category")) {
-            data = data.filter((availability) => availability.bycicle.category === utils.getUrlParam("category"));
-            document.querySelector(".pagination").innerHTML += `<button class="effect" onclick="removeFilters()">Remove filters</button>`;
+          if (areFiltersOn()) {
+            data = filterData(data, "category", utils.getUrlParam("category"));
           }
 
           data.forEach((availability) => {
@@ -57,10 +58,10 @@
             document.querySelector(".content").innerHTML += card;
           });
 
-          document.querySelector("#currentPage").innerHTML = this.currentPage + "/" + this.maxPage;
+          document.querySelector("#pageIndicator").innerHTML = this.currentPage + "/" + this.maxPage;
         })
         .catch((error) => {
-          document.querySelector(".content").innerHTML = `<h1 class="availabilityNotFound" >Sorry, we are not able to show you the availabilities at the moment. Please try again later.</h1>`;
+          noAvailability();
           console.log(error);
         });
     });
@@ -69,7 +70,7 @@
       if (this.currentPage < this.maxPage) {
         this.currentPage++;
         document.querySelector(".content").innerHTML = "";
-        document.querySelector("#currentPage").innerHTML = this.currentPage + "/" + this.maxPage;
+        document.querySelector("#pageIndicator").innerHTML = this.currentPage + "/" + this.maxPage;
 
         let cards = cardComponent.fillTemplate(
           this.availabilities.slice((this.currentPage - 1) * this.pagination, this.currentPage * this.pagination)
@@ -84,7 +85,7 @@
       if (this.currentPage > 1) {
         this.currentPage--;
         document.querySelector(".content").innerHTML = "";
-        document.querySelector("#currentPage").innerHTML = this.currentPage + "/" + this.maxPage;
+        document.querySelector("#pageIndicator").innerHTML = this.currentPage + "/" + this.maxPage;
 
         let cards = cardComponent.fillTemplate(
           this.availabilities.slice((this.currentPage - 1) * this.pagination, this.currentPage * this.pagination)
@@ -97,6 +98,34 @@
     
     function removeFilters() {
       window.location.href = "./index.html";
+    }
+
+    function noAvailability() {
+      document.querySelector(".content").innerHTML = `<h1 class="availabilityNotFound" >Sorry, we are not able to show you the availabilities at the moment. Please try again later.</h1>`;
+      document.querySelector(".pagination").innerHTML = "";
+    }
+
+    /**
+      * @param {Array} data
+      * @param {String} filteredProperty
+      * @param {String} filterValue
+      */
+    function filterData(data, filteredProperty, filterValue) {
+      let dataNames = data.length > 0 ? Object.getOwnPropertyNames(data[0].bycicle) : [];
+
+      for (let i = 0; i < dataNames.length; i++) {
+        if (dataNames[i] == filteredProperty) {
+          document.querySelector(".pagination").innerHTML += `<button class="effect" onclick="removeFilters()">Remove filters</button>`;
+          return data.filter((availability) => availability.bycicle[filteredProperty] === filterValue);
+        }
+      };
+    }
+
+    function areFiltersOn() {
+      if (utils.getUrlParam("category")) {
+        return true;
+      }
+      return false;
     }
   </script>
 </html>
