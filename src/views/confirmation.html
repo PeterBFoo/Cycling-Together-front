@@ -2,6 +2,8 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="../styles/confirmation.css" />
+        <link rel="icon" href="https://bikeshare.metro.net/wp-content/uploads/2016/04/cropped-metro-bike-share-favicon-1-300x300.png" />
+        <title>Confirmation</title>
     </head>
     <body>
         <div class="content">
@@ -24,8 +26,7 @@
     <script src="../utils/Utils.js"></script>
     <script src="../services/BookingService.js"></script>
     <script>
-        window.addEventListener("load", async () => {
-            
+        window.addEventListener("load", async () => {            
             document.getElementById("fillableBookingIdText").innerHTML = `Your booking ID is: <strong>${utils.getUrlParam("bookingId")}</strong>, please keep it for future reference. You can consult your booking details in the "My Booking" section.`;
 
             bookingService.getBooking(utils.getUrlParam("bookingId"))
