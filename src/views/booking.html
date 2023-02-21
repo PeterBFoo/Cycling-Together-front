@@ -1,7 +1,9 @@
 <html>
     <head>
         <title>Booking</title>
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="../styles/booking.css">
+        <link rel="icon" href="https://bikeshare.metro.net/wp-content/uploads/2016/04/cropped-metro-bike-share-favicon-1-300x300.png" />
     </head>
     <body>
         <div class="header-container"></div>
@@ -14,16 +16,16 @@
                     Your basic information
                 </legend>
                 <label for="name">Name *</label>
-                <input type="text" id="name" name="name">
+                <input maxlength="20" type="text" id="name" name="name">
             
                 <label for="surname">Surname *</label>
-                <input type="text" id="surname" name="surname">
+                <input maxlength="30" type="text" id="surname" name="surname">
             
                 <label for="email">Email *</label>
-                <input type="email" id="email" name="email">
+                <input maxlength="50" type="email" id="email" name="email">
             
                 <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone">
+                <input maxlength="16" type="tel" id="phone" name="phone">
             </fieldset>
             <fieldset>  
                 <legend><span class="number">2</span>Dates</legend>
