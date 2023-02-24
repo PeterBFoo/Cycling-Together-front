@@ -297,4 +297,45 @@ nav a:focus {
   .blog-card.alt .details {
     padding-left: 25px;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+@media (max-width: 600px) {
+  .blog-card {
+    flex-direction: row;
+    max-width: 500px;
+  }
+
+  .blog-card .meta {
+    flex-basis: 50%;
+    height: auto;
+  }
+
+  .blog-card .description {
+    flex-basis: 40%;
+  }
+
+  .blog-card .description:before {
+    transform: skewX(-3deg);
+    content: "";
+    background: #fff;
+    width: 30px;
+    position: absolute;
+    left: -10px;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  .blog-card.alt {
+    flex-direction: row-reverse;
+  }
+  .blog-card.alt .description:before {
+    left: inherit;
+    right: -10px;
+    transform: skew(3deg);
+  }
+  .blog-card.alt .details {
+    padding-left: 25px;
+  }
+  
+}
