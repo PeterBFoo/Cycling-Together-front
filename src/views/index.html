@@ -30,6 +30,7 @@
       this.pagination = 3;
       this.currentPage = 1;
       this.maxPage = 0;
+      this.availableFilters = ["category"];
 
       document.querySelector(".header-container").innerHTML = headerComponent.fillTemplateDefault();
 
@@ -44,7 +45,10 @@
         .then((data) => {
 
           if (areFiltersOn()) {
-            data = filterData(data, "category", utils.getUrlParam("category"));
+            let paramNames = utils.getParamNames(this.availableFilters);
+            paramNames.forEach((param) => {
+              data = filterData(data, param, utils.getUrlParam(param));
+            })
           }
 
           data.forEach((availability) => {
@@ -122,8 +126,10 @@
     }
 
     function areFiltersOn() {
-      if (utils.getUrlParam("category")) {
-        return true;
+      for (let i = 0; i < this.availableFilters.length; i++) {
+        if (utils.getUrlParam(this.availableFilters[i])) {
+          return true;
+        }
       }
       return false;
     }
