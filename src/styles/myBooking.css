@@ -188,4 +188,10 @@ input {
 		.column{
 			width: 80%;
 		}
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
 	}
