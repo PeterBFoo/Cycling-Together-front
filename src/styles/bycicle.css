@@ -169,3 +169,33 @@ nav a:focus {
   font-size: 15pt;
   color: white;
 }
+
+@media(max-width: 1300px) {
+  .bycicle__photo {
+    display: none;
+  }
+
+  .bycicle {
+    display: flex;
+    justify-content: center;
+  }
+
+  .bycicle__info__title {
+    font-size: 16pt;
+  }
+  
+  .bycicle__info__description {
+    font-size: 15pt;
+  }
+  
+  .bycicle__info__price {
+    text-align: center;
+    margin-top: 10pt;
+    padding: 10pt;
+  }
+
+  .effect {
+    width: 100%;
+  }
+
+}
