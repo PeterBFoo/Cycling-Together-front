@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev node ./src/index.js",
-    "start": "cross-env NODE_ENV=prod node ./src/index.js"
+    "start": "node ./src/index.js"
   },
   "author": "",
   "license": "ISC",
