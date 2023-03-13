@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../styles/myBooking.css" />
+        <link rel="icon" href="https://bikeshare.metro.net/wp-content/uploads/2016/04/cropped-metro-bike-share-favicon-1-300x300.png" />
+        <title>My booking</title>
+    </head>
+    <body>
+        <div class="header-container"></div>
+        <div class="content">
+            <div class="column">
+                <img src="https://us.123rf.com/450wm/cowpland/cowpland1501/cowpland150100175/35162984-lupa-ico-plana-moderna.jpg?ver=6" height="60px" width="60px">
+                <h1>My bookings</h1>
+                <p>Here you can search any of your bookings, you can cancel them if you want.</p>
+                <div class="divider"></div>
+                <div id="bookingSearcher">
+                    <input maxlength="8" type="text" id="bookingId" placeholder="Booking ID" />
+                    <button class="effect search" onclick="contentController.searchBooking()">Search</button>
+                    <button class="effect arrow" onclick="window.location.href = './index.html'">Home</button>
+                </div>
+                <div id="error" class="error"></div>
+                <div id="bookingDetails" class="bookingDetails"></div>
+                <nav id="navigation" class="hidden">
+                    <a href="./index.html"><button class="effect arrow">Home</button></a>
+                    <div id="printButton">
+                        <button class="effect print" onclick="window.print()">Print</button>
+                    </div>
+                    <div id="cancelBooking">
+                        <button class="effect cancel" onclick="contentController.cancelBooking()">Cancel</button>
+                    </div>
+                    <button class="effect search" onclick="contentController.showSearcher()">Search</button>
+                </nav>
+        </div>
+    </body>
+    <script src="./utils/Utils.js"></script>
+    <script src="./services/BookingService.js"></script>
+    <script src="./content-controllers/myBooking.controller.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            contentController.load();
+        })
+    </script>
+</html>

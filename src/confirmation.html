@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="./styles/confirmation.css" />
+        <link rel="icon" href="https://bikeshare.metro.net/wp-content/uploads/2016/04/cropped-metro-bike-share-favicon-1-300x300.png" />
+        <title>Confirmation</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="column">
+                <img height="50" width="50" src="https://cdns.iconmonstr.com/wp-content/releases/preview/2018/240/iconmonstr-check-mark-circle-thin.png" alt="Confirmation" />
+                <h1>Booking confirmed!</h1>
+                <p>Thank you so much for booking with us, here are some of your details of your booking.</p>
+                <p id="fillableBookingIdText"></p>
+                <div class="divider"></div>
+                <div id="bookingDetails" class="bookingDetails"></div>
+                <nav class="links">
+                    <a href="./index.html"><button class="effect arrow">Home</button></a>
+                    <div id="printButton">
+                        <button class="effect print" onclick="window.print()">Print</button>
+                    </div>
+                    <div id="cancelBooking">
+                        <button class="effect cancel" onclick="contentController.cancelBooking()">Cancel</button>
+                    </div>
+                </nav>
+        </div>
+    </body>
+    <script src="./utils/Utils.js"></script>
+    <script src="./services/BookingService.js"></script>
+    <script src="./content-controllers/confirmation.controller.js" defer ></script>
+    <script>
+        window.addEventListener("load", async () => {            
+            contentController.load();
+        }); 
+    </script>
+</html>
