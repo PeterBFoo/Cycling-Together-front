@@ -12,6 +12,7 @@ p {
   }
 
   #error {
+    padding: 10px;
     color: rgb(209, 85, 85);
   }
 
@@ -86,6 +87,7 @@ p {
   }
   
   fieldset {
+    margin-top: 10px;
     margin-bottom: 30px;
     border: none;
   }

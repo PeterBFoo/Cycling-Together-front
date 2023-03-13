@@ -58,18 +58,19 @@ li {
 }
 
 .bycicle {
-  
   color: #312F2F;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: #312F2F;
+  margin-top: 30px;
   padding: 20px;
 }
 
 .bycicle__info {
   margin-right: 10%;
+  margin-left: 10%;
 }
 
 .bycicle__photo {
