@@ -74,7 +74,7 @@ var bycicleComponent = {
             }
         })
         props.price.content = "<strong>" + bycicle.price + "</strong>" + "€ for each day";
-        props.booking.href = "./booking.html?bycicleId=" + bycicle.id + "&storeId=" + bycicle.storeId + "&price=" + bycicle.price;
+        props.booking.href = "./booking.html?bycicleId=" + bycicle.id + "&storeId=" + bycicle.storeId;
         props.booking.content = "Book now";
 
         template = template.replace(this.fillable.photo.url, props.photo.url);
