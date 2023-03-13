@@ -2,11 +2,10 @@
   "name": "cycling-together-front",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./init.js"
   },
-  "author": "",
+  "author": "PeterBFoo",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.3",
