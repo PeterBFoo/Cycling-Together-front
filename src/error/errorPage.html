@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Something went wrong</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../styles/availability.css" />
+    </head>
+    <body>
+        <div class="header-container"></div>
+        <div class="errorContent">
+            <h1>Something went wrong</h1>
+            <p>Sorry, something went wrong. Please, try again later.</p>
+        </div>
+    </body>
+    <script src="../components/header.js"></script>
+    <script>
+        window.addEventListener("load", async () => {
+            document.querySelector(".header-container").innerHTML = headerComponent.fillTemplateDefault();
+            document.querySelector("#home").setAttribute("href", "/");
+            document.querySelector("#mybooking").setAttribute("href", "/myBooking.html");
+        });
+    </script>
+</html>

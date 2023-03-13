@@ -4,8 +4,8 @@ function Header() {
     <div class="header">
         <h1>{{title content}}</h1>
         <nav>
-            <a href="./index.html">Home</a>
-            <a href="./myBooking.html">My booking</a>
+            <a id="home" href="./index.html">Home</a>
+            <a id="mybooking" href="./myBooking.html">My booking</a>
         </nav>
     </div>`;
 
