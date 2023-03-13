@@ -22,5 +22,10 @@ var utils = {
         });
 
         return paramNames;
+    },
+
+    getParamValue: function (name) {
+        let searchParams = this.getUrlSearchParams(window);
+        return searchParams.get(name);
     }
 }
